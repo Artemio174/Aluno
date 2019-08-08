@@ -32,8 +32,32 @@ public class ControladorAluno {
 
     //To change body of generated methods, choose Tools | Templates.
 
-    public static void alterar(ManutencaoAluno aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static void alterar(ManutencaoAluno man){
+        Aluno objeto = new Aluno();
+        //definir todos os atributos
+        objeto.setCodigo(Integer.parseInt(man.jtfcodigo.getText()));
+        objeto.setNome(man.jtfnome.getText());
+        objeto.setSobrenome(man.jtfsobrenome.getText());
+        objeto.setSexo(man.jtfsexo.getText());
+        
+        boolean resultado = AlunoDao.alterar(objeto);
+        if (resultado) {
+            JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro!");
+        }
+    }
+
+    public static void excluir(ManutencaoAluno man){
+        Aluno objeto = new Aluno();
+        objeto.setCodigo(Integer.parseInt(man.jtfcodigo.getText())); //só precisa definir a chave primeira
+        
+        boolean resultado = AlunoDao.excluir(objeto);
+        if (resultado) {
+            JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro!");
+        }
     }
     }
     

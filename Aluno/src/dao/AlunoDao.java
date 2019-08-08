@@ -43,4 +43,32 @@ public class AlunoDao {
             JOptionPane.showMessageDialog(null, "Erro!");
         }
     }
+     public static boolean alterar(Aluno objeto) {
+        String sql = "UPDATE Aluno SET nome = ?, sobrenome = ?, sexo = ? WHERE codigo=?";
+        try {
+            PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
+            ps.setString(1, objeto.getNome()); 
+            ps.setString(2, objeto.getSobrenome());
+            ps.setString(3, objeto.getSexo());
+            ps.setInt(4, objeto.getCodigo());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+    }
+     public static boolean excluir(Aluno objeto) {
+        String sql = "DELETE FROM Aluno WHERE codigo=?";
+        try {
+            PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
+            ps.setInt(1, objeto.getCodigo());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+    }
+
 }
