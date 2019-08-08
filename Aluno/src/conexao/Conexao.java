@@ -20,7 +20,7 @@ public class Conexao {
     private final static String ip = "localhost/";
     public static String dataBase = "Aluno";
     public static String user = "postgres";
-    public static String password = "postgres";
+    public static String password = "gohanssj21704";
 
     public Conexao(Connection conn) {
         this.conn = conn;
